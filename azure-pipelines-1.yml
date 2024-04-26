@@ -13,7 +13,10 @@ steps:
   inputs:
     versionSpec: '10.x'
   displayName: 'Install Node.js'
-
+- task: UseRubyVersion@0
+  inputs:
+    versionSpec: '>= 2.4'
+  
 - script: |
     echo "Ruby version $(ruby -v)"
     echo "Ruby versions $(rbenv versions)"
