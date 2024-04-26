@@ -15,12 +15,23 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
+    echo "Ruby version $(ruby -v)"
+    echo "Ruby versions $(rbenv versions)"
+    echo "Gem version $(gem -v)"
+    echo "Xcode path $(xcode-select --print-path)"
+    echo "Xcode version $(xcodebuild -version)"
+    echo "set ruby version $(rbenv local 3.1.4)"
+    echo "Ruby version $(ruby -v)"
+    echo "Node versino $(node -v)"
+    echo "Which xpretty $(which xcpretty)"
+    echo "xcpretty $(xcpretty -v)"
     which /usr/local/opt/ruby/bin/ruby
     /usr/local/opt/ruby/bin/ruby -v
     which ruby
     ruby -v
     which xcpretty 
     xcpretty -v
+
     npm install
     npm run build
     npm test
