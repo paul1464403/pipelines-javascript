@@ -13,6 +13,20 @@ steps:
   inputs:
     versionSpec: '10.x'
   displayName: 'Install Node.js'
+- task: UseRubyVersion@0
+  inputs:
+    versionSpec: '>= 2.4'
+    addToPath: false
+
+# Add Ruby to the PATH manually with the desired path.
+- script: |
+    echo "##vso[task.setvariable variable=PATH]$(PATH):/usr/local/opt/ruby/bin/ruby"
+  displayName: 'Add Ruby to PATH'
+
+# Verify the Ruby version
+- script: |
+    ruby -v
+  displayName: 'Check Ruby Version'
 
 - script: |
     echo "Ruby version $(ruby -v)"
@@ -20,7 +34,6 @@ steps:
     echo "Gem version $(gem -v)"
     echo "Xcode path $(xcode-select --print-path)"
     echo "Xcode version $(xcodebuild -version)"
-    echo "set ruby version $(/usr/local/opt/ruby/bin/ruby)"
     echo "Ruby version $(ruby -v)"
     echo "Node versino $(node -v)"
     echo "Which xpretty $(which xcpretty)"
