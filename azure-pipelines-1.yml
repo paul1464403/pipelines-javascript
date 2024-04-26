@@ -20,7 +20,7 @@ steps:
     echo "Gem version $(gem -v)"
     echo "Xcode path $(xcode-select --print-path)"
     echo "Xcode version $(xcodebuild -version)"
-    echo "set ruby version $(rbenv local 3.1.4)"
+    echo "set ruby version $(/usr/local/opt/ruby/bin/ruby)"
     echo "Ruby version $(ruby -v)"
     echo "Node versino $(node -v)"
     echo "Which xpretty $(which xcpretty)"
