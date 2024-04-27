@@ -13,7 +13,10 @@ steps:
   inputs:
     versionSpec: '10.x'
   displayName: 'Install Node.js'
-
+- task: UseRubyVersion@0
+  inputs:
+    versionSpec: '>= 2.6.10p210'
+    addToPath: false
 
 # Add Ruby to the PATH manually with the desired path.
 - script: |
