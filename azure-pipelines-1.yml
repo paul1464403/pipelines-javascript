@@ -15,14 +15,13 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
-    export AGENT_TOOLSDIRECTORY=/usr/local/opt/ruby/bin
-  displayName: 'Set custom tool cache path'
+    export PATH=/usr/local/opt/ruby/bin:$PATH
+  displayName: 'Add Ruby to PATH'
 
-# Ensure Ruby is accessible
+# Verify Ruby is accessible
 - script: |
-    export PATH=$AGENT_TOOLSDIRECTORY:$PATH
-    ruby -v  # This should display the Ruby version
-  displayName: 'Check Ruby Path'
+    ruby -v  # Check if Ruby is recognized
+  displayName: 'Check Ruby Version'
 
 - script: |
     echo "Ruby version $(ruby -v)"
