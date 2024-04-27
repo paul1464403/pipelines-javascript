@@ -14,13 +14,19 @@ steps:
     versionSpec: '10.x'
   displayName: 'Install Node.js'
 
+- task: UseRubyVersion@0
+  inputs:
+    versionSpec: '>= 2.4'
+    addToPath: false
+
+# Add Ruby to the PATH manually with the desired path.
 - script: |
-    export PATH=/usr/local/opt/ruby/bin:$PATH
+    echo "##vso[task.setvariable variable=PATH]$(PATH):/usr/local/opt/ruby/bin/ruby"
   displayName: 'Add Ruby to PATH'
 
-# Verify Ruby is accessible
+# Verify the Ruby version
 - script: |
-    ruby -v  # Check if Ruby is recognized
+    ruby -v
   displayName: 'Check Ruby Version'
 
 - script: |
