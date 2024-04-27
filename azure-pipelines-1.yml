@@ -33,6 +33,7 @@ steps:
     which xcpretty 
     xcpretty -v
     brew install ruby
+    source ~/.zshrc
     ruby -v
     which ruby
     
