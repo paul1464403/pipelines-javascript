@@ -14,20 +14,7 @@ steps:
     versionSpec: '10.x'
   displayName: 'Install Node.js'
 
-- task: UseRubyVersion@0
-  inputs:
-    versionSpec: '>= 2.4'
-    addToPath: false
 
-# Add Ruby to the PATH manually with the desired path.
-- script: |
-    echo "##vso[task.setvariable variable=PATH]$(PATH):/usr/local/opt/ruby/bin/ruby"
-  displayName: 'Add Ruby to PATH'
-
-# Verify the Ruby version
-- script: |
-    ruby -v
-  displayName: 'Check Ruby Version'
 
 - script: |
     echo "Ruby version $(ruby -v)"
@@ -45,7 +32,11 @@ steps:
     ruby -v
     which xcpretty 
     xcpretty -v
-
+    brew install ruby
+    ruby -v
+    which ruby
+    
+    export PATH=/usr/local/opt/ruby/bin:$PATH
     npm install
     npm run build
     npm test
